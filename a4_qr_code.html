@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Poster Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            /* Fundo cinza para destacar a folha branca */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Dimensões Proporcionais da Folha A4 */
+        .a4-container {
+            width: 100%;
+            max-width: 794px;
+            /* Largura A4 em 96 DPI */
+            height: 1123px;
+            /* Altura A4 em 96 DPI */
+            background-color: #ffffff;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Configurações exatas para Impressão */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0mm;
+                /* Remove as margens do navegador */
+            }
+
+            body {
+                background-color: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                /* Remove o flexbox que centraliza na tela */
+            }
+
+            .a4-container {
+                box-shadow: none !important;
+                /* Tira a sombra */
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 100% !important;
+                /* Ajusta a altura exata da folha física */
+                margin: 0 !important;
+                page-break-after: avoid;
+                page-break-before: avoid;
+            }
+
+            /* Força o navegador a imprimir o fundo escuro do cabeçalho e a borda amarela */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="a4-container">
+
+        <header class="bg-slate-900 text-white border-b-8 border-yellow-500 w-full px-6 py-8 shadow-md">
+            <div class="flex items-center justify-between">
+                <!-- Logo Governo e Título -->
+                <div class="flex items-center space-x-6">
+                    <img src="./assets/Brasao_Governo_500.png" alt="Brasão Governo do Espírito Santo"
+                        title="Governo do Espírito Santo" class="h-16 md:h-20 w-auto object-contain -ml-4">
+                    <div>
+                        <h1 class="text-xl md:text-xl font-bold leading-tight uppercase max-w-[380px]">
+                            Centro Integrado de Perícia Técnico-Científica do ES
+                        </h1>
+                    </div>
+                </div>
+                <!-- Logo Geribello -->
+                <div class="flex items-center flex-shrink-0 ml-4">
+                    <img src="./assets/logo-geribello-white-h-1.png" alt="Geribello Engenharia"
+                        title="Geribello Engenharia" class="h-12 md:h-16 w-auto object-contain">
+                </div>
+            </div>
+        </header>
+
+        <div class="flex flex-col flex-grow justify-between p-12">
+
+            <main class="flex flex-col items-center justify-center flex-grow py-4">
+
+                <h3 class="text-4xl font-extrabold text-slate-800 mb-12 text-center uppercase tracking-wide">
+                    Acesse o Tour Virtual 360º
+                </h3>
+
+                <!-- Container do QR Code -->
+                <div
+                    class="p-6 bg-white rounded-3xl shadow-2xl border border-gray-200 flex justify-center items-center">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=https://www.banibconecta.com/site/tour/199643/geribello-engenharia-ltda/implantacao-28-07-2026/autostart"
+                        alt="QR Code do Tour Virtual" class="w-[350px] h-[350px]">
+                </div>
+
+                <!-- Call to action com instrução clara -->
+                <div class="mt-12 flex flex-col items-center">
+                    <p
+                        class="text-xl text-slate-800 font-semibold bg-slate-100 px-8 py-4 rounded-full border border-slate-300 shadow-sm flex items-center gap-3">
+                        <span class="text-2xl">📸</span> Abra a câmera e aponte para o código
+                    </p>
+                </div>
+
+            </main>
+
+            <footer class="text-center pb-6 mt-4">
+                <p class="text-gray-500 mb-3 text-lg">Ou acesse o link alternativo:</p>
+                <p
+                    class="text-2xl font-mono font-bold text-slate-900 bg-slate-100 px-6 py-4 rounded-lg border border-slate-300 inline-block shadow-inner">
+                    https://bit.ly/tour-ciptc
+                </p>
+                <!-- Data baseada na URL para controle de versão do cartaz -->
+                <p class="text-base text-gray-400 mt-8 font-medium">Atualização: 28 de Julho de 2026</p>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>
