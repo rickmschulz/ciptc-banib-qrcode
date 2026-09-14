@@ -72,6 +72,7 @@
             }
         }
     </style>
+    <script src="config.js"></script>
 </head>
 
 <body>
@@ -82,18 +83,17 @@
             <div class="flex items-center justify-between">
                 <!-- Logo Governo e Título -->
                 <div class="flex items-center space-x-6">
-                    <img src="./assets/Brasao_Governo_500.png" alt="Brasão Governo do Espírito Santo"
-                        title="Governo do Espírito Santo" class="h-16 md:h-20 w-auto object-contain -ml-4">
+                    <img id="logo-gov" src="" alt="" title=""
+                        class="h-16 md:h-20 w-auto object-contain -ml-4">
                     <div>
-                        <h1 class="text-xl md:text-xl font-bold leading-tight uppercase max-w-[380px]">
-                            Centro Integrado de Perícia Técnico-Científica do ES
-                        </h1>
+                        <h1 id="header-title"
+                            class="text-xl md:text-xl font-bold leading-tight uppercase max-w-[380px]"></h1>
                     </div>
                 </div>
-                <!-- Logo Geribello -->
+                <!-- Logo Parceiro -->
                 <div class="flex items-center flex-shrink-0 ml-4">
-                    <img src="./assets/logo-geribello-white-h-1.png" alt="Geribello Engenharia"
-                        title="Geribello Engenharia" class="h-12 md:h-16 w-auto object-contain">
+                    <img id="logo-partner" src="" alt="" title=""
+                        class="h-12 md:h-16 w-auto object-contain">
                 </div>
             </div>
         </header>
@@ -102,39 +102,72 @@
 
             <main class="flex flex-col items-center justify-center flex-grow py-4">
 
-                <h3 class="text-4xl font-extrabold text-slate-800 mb-12 text-center uppercase tracking-wide">
-                    Acesse o Tour Virtual 360º
-                </h3>
+                <h3 id="main-heading"
+                    class="text-4xl font-extrabold text-slate-800 mb-12 text-center uppercase tracking-wide"></h3>
 
                 <!-- Container do QR Code -->
                 <div
                     class="p-6 bg-white rounded-3xl shadow-2xl border border-gray-200 flex justify-center items-center">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=https://www.banibconecta.com/site/tour/199643/geribello-engenharia-ltda/implantacao-28-07-2026/autostart"
-                        alt="QR Code do Tour Virtual" class="w-[350px] h-[350px]">
+                    <img id="qr-code" src="" alt="QR Code do Tour Virtual">
                 </div>
 
                 <!-- Call to action com instrução clara -->
                 <div class="mt-12 flex flex-col items-center">
-                    <p
+                    <p id="call-to-action"
                         class="text-xl text-slate-800 font-semibold bg-slate-100 px-8 py-4 rounded-full border border-slate-300 shadow-sm flex items-center gap-3">
-                        <span class="text-2xl">📸</span> Abra a câmera e aponte para o código
                     </p>
                 </div>
 
             </main>
 
             <footer class="text-center pb-6 mt-4">
-                <p class="text-gray-500 mb-3 text-lg">Ou acesse o link alternativo:</p>
-                <p
+                <p id="alt-link-label" class="text-gray-500 mb-3 text-lg"></p>
+                <p id="alt-link-url"
                     class="text-2xl font-mono font-bold text-slate-900 bg-slate-100 px-6 py-4 rounded-lg border border-slate-300 inline-block shadow-inner">
-                    https://bit.ly/tour-ciptc
                 </p>
                 <!-- Data baseada na URL para controle de versão do cartaz -->
-                <p class="text-base text-gray-400 mt-8 font-medium">Atualização: 28 de Julho de 2026</p>
+                <p id="update-date" class="text-base text-gray-400 mt-8 font-medium"></p>
             </footer>
 
         </div>
     </div>
+
+    <script>
+        // ── Popula o DOM a partir de posterConfig ──────────────────
+        (function () {
+            const c = posterConfig;
+
+            // Cabeçalho
+            const logoGov = document.getElementById("logo-gov");
+            logoGov.src = c.header.logoGov.src;
+            logoGov.alt = c.header.logoGov.alt;
+            logoGov.title = c.header.logoGov.title;
+
+            const logoPartner = document.getElementById("logo-partner");
+            logoPartner.src = c.header.logoPartner.src;
+            logoPartner.alt = c.header.logoPartner.alt;
+            logoPartner.title = c.header.logoPartner.title;
+
+            document.getElementById("header-title").textContent = c.header.title;
+
+            // Conteúdo principal
+            document.getElementById("main-heading").textContent = c.main.heading;
+
+            const qr = document.getElementById("qr-code");
+            const qrSize = c.qrCode.size;
+            qr.src = `${c.qrCode.apiBase}?size=${qrSize}x${qrSize}&data=${encodeURIComponent(c.qrCode.targetUrl)}`;
+            qr.style.width = qrSize + "px";
+            qr.style.height = qrSize + "px";
+
+            document.getElementById("call-to-action").innerHTML =
+                `<span class="text-2xl">${c.main.callToActionEmoji}</span> ${c.main.callToAction}`;
+
+            // Rodapé
+            document.getElementById("alt-link-label").textContent = c.footer.altLinkLabel;
+            document.getElementById("alt-link-url").textContent = c.footer.altLinkUrl;
+            document.getElementById("update-date").textContent = "Atualização: " + c.footer.updateDate;
+        })();
+    </script>
 
 </body>
 </html>
