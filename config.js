@@ -41,7 +41,6 @@ const posterConfig = {
 
   // ── Rodapé ─────────────────────────────────────────────────
   footer: {
-    altLinkUrl: "https://bit.ly/tour-ciptc",
     updateDate: "28 de Setembro de 2026",
   },
 };
