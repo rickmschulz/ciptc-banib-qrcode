@@ -32,7 +32,7 @@ const posterConfig = {
   qrCode: {
     /** URL que o QR Code deve apontar */
     targetUrl:
-      "https://www.banibconecta.com/site/tour/201068/geribello-engenharia-ltda/implantacao-28-08-2026/autostart",
+      "https://www.banibconecta.com/site/tour/202466/geribello-engenharia-ltda/implantacao-28-09-2026/autostart",
     /** Tamanho do QR Code em pixels (largura x altura) */
     size: 350,
     /** API usada para gerar o QR Code (não precisa alterar) */
@@ -41,8 +41,7 @@ const posterConfig = {
 
   // ── Rodapé ─────────────────────────────────────────────────
   footer: {
-    altLinkLabel: "Ou acesse o link alternativo:",
     altLinkUrl: "https://bit.ly/tour-ciptc",
-    updateDate: "28 de Agosto de 2026",
+    updateDate: "28 de Setembro de 2026",
   },
 };
